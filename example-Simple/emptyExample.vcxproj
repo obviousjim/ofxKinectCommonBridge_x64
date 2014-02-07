@@ -102,7 +102,7 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>src;..\..\..\addons\ofxKinectCommonBridge\src;..\..\..\addons\ofxKinectCommonBridge\libs\KinectCommonBridge\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;..\..\..\addons\ofxKinectCommonBridge_x64\src;..\..\..\addons\ofxKinectCommonBridge_x64\libs\KinectCommonBridge\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
@@ -110,7 +110,7 @@
       <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <AdditionalDependencies>%(AdditionalDependencies);KinectCommonBridge.lib;Kinect10.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\addons\ofxKinectCommonBridge\libs\KinectCommonBridge\lib\windows;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\addons\ofxKinectCommonBridge_x64\libs\KinectCommonBridge\lib\vs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs\*.dll" "$(ProjectDir)bin"
@@ -126,7 +126,7 @@ xcopy /e /i /y "$(ProjectDir)..\libs\KinectCommonBridge\lib\windows\*.dll" "$(Pr
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>src;..\..\..\addons\ofxKinectCommonBridge\src;..\..\..\addons\ofxKinectCommonBridge\libs\KinectCommonBridge\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;..\..\..\addons\ofxKinectCommonBridge_x64\src;..\..\..\addons\ofxKinectCommonBridge_x64\libs\KinectCommonBridge\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
@@ -134,7 +134,7 @@ xcopy /e /i /y "$(ProjectDir)..\libs\KinectCommonBridge\lib\windows\*.dll" "$(Pr
       <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <AdditionalDependencies>%(AdditionalDependencies);KinectCommonBridged.lib;Kinect10.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\addons\ofxKinectCommonBridge\libs\KinectCommonBridge\lib\vs64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\addons\ofxKinectCommonBridge_x64\libs\KinectCommonBridge\lib\vs64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs\*.dll" "$(ProjectDir)bin"
@@ -148,7 +148,7 @@ xcopy /e /i /y "$(ProjectDir)..\libs\KinectCommonBridge\lib\windows\*.dll" "$(Pr
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>src;..\..\..\addons\ofxKinect4Windows\src;..\..\..\addons\ofxKinect4Windows\libs\KinectCommonBridge\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;..\..\..\addons\ofxKinectCommonBridge_x64\src;..\..\..\addons\ofxKinectCommonBridge_x64\libs\KinectCommonBridge\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
@@ -159,7 +159,7 @@ xcopy /e /i /y "$(ProjectDir)..\libs\KinectCommonBridge\lib\windows\*.dll" "$(Pr
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <AdditionalDependencies>%(AdditionalDependencies);KinectCommonBridge.lib;Kinect10.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\addons\ofxKinectCommonBridge\libs\KinectCommonBridge\lib\windows;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\addons\ofxKinectCommonBridge_x64\libs\KinectCommonBridge\lib\vs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs\*.dll" "$(ProjectDir)bin"
@@ -173,7 +173,7 @@ xcopy /e /i /y "$(ProjectDir)..\libs\KinectCommonBridge\lib\windows\x86\*.dll" "
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>src;..\..\..\addons\ofxKinectCommonBridge\src;..\..\..\addons\ofxKinectCommonBridge\libs\KinectCommonBridge\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;..\..\..\addons\ofxKinectCommonBridge_x64\src;..\..\..\addons\ofxKinectCommonBridge_x64\libs\KinectCommonBridge\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
