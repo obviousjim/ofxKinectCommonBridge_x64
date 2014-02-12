@@ -138,8 +138,8 @@ xcopy /e /i /y "$(ProjectDir)..\libs\KinectCommonBridge\lib\windows\*.dll" "$(Pr
     </Link>
     <PostBuildEvent>
       <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs\*.dll" "$(ProjectDir)bin"
-xcopy /e /i /y "$(ProjectDir)..\libs\KinectCommonBridge\lib\vs\*.dll" "$(ProjectDir)bin"
-xcopy /e /i /y "$(ProjectDir)..\libs\KinectCommonBridge\lib\vs\*.pbd" "$(ProjectDir)bin"</Command>
+xcopy /e /i /y "$(ProjectDir)..\libs\KinectCommonBridge\lib\vs64\*.dll" "$(ProjectDir)bin"
+xcopy /e /i /y "$(ProjectDir)..\libs\KinectCommonBridge\lib\vs64\*.pbd" "$(ProjectDir)bin"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -188,9 +188,8 @@ xcopy /e /i /y "$(ProjectDir)..\libs\KinectCommonBridge\lib\windows\x86\*.dll" "
     </Link>
     <PostBuildEvent>
       <Command>xcopy /e /i /y "$(ProjectDir)..\..\..\export\vs\*.dll" "$(ProjectDir)bin"
-xcopy /e /i /y "$(ProjectDir)..\libs\KinectCommonBridge\lib\vs\*.dll" "$(ProjectDir)bin"
-xcopy /e /i /y "$(ProjectDir)..\libs\KinectCommonBridge\lib\vs\*.pbd" "$(ProjectDir)bin"
-</Command>
+xcopy /e /i /y "$(ProjectDir)..\libs\KinectCommonBridge\lib\vs64\*.dll" "$(ProjectDir)bin"
+xcopy /e /i /y "$(ProjectDir)..\libs\KinectCommonBridge\lib\vs64\*.pbd" "$(ProjectDir)bin"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
