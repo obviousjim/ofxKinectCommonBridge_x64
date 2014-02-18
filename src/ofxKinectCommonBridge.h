@@ -109,10 +109,16 @@ class ofxKinectCommonBridge : protected ofThread {
 		return depthTex;
 	}
 
-
 	ofTexture &getColorTexture() {
 		return videoTex;
 	}
+
+	unsigned short getRawDepthValue(ofVec2f pos);
+
+	//coordinate mapping
+	ofVec3f getSkeletonPositionForDepthPosition(ofVec2f pos);
+	ofVec2f getDepthPositionForColorPosition(int x, int y);
+	ofVec2f getDepthPositionForColorPosition(ofVec2f pos);
 
   private:
 

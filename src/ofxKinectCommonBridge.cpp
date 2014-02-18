@@ -70,6 +70,8 @@ const ofVec3f SkeletonBone::getScreenPosition() {
 
 ofxKinectCommonBridge::ofxKinectCommonBridge(){
 	hKinect = NULL;
+	mapper = NULL;
+	nuiSensor = NULL;
 
 	beginMappingColorToDepth = false;
 
@@ -177,7 +179,6 @@ void ofxKinectCommonBridge::update()
 			delete[] depth;
 
 		}*/
-
 		bNeedsUpdateVideo = false;
 
 		if(bUseTexture) {
@@ -197,7 +198,7 @@ void ofxKinectCommonBridge::update()
 					// swizzle this to rgb & a -> GL_ONE
 					videoTex.loadData(videoPixels.getPixels(), colorFormat.dwWidth, colorFormat.dwHeight, GL_BGRA);
 				} else {
-					videoTex.loadData(videoPixels.getPixels(), colorFormat.dwWidth, colorFormat.dwHeight, GL_RGBA);
+					videoTex.loadData(videoPixels.getPixels(), colorFormat.dwWidth, colorFormat.dwHeight, GL_BGRA);
 				}
 			}
 		}
@@ -704,6 +705,33 @@ bool ofxKinectCommonBridge::start()
 	startThread(true, false);
 	bStarted = true;	
 	return true;
+}
+
+
+//----------------------------------------------------------
+unsigned short ofxKinectCommonBridge::getRawDepthValue(ofVec2f pos){
+	return getRawDepthPixelsRef()[ pos.x + pos.y*getRawDepthPixelsRef().getWidth() ];
+}
+
+
+//----------------------------------------------------------
+ofVec3f ofxKinectCommonBridge::getSkeletonPositionForDepthPosition(ofVec2f pos){
+	Vector4 pt = NuiTransformDepthImageToSkeleton(pos.x,pos.y,getRawDepthValue(pos));
+	return ofVec3f(pt.x,pt.y,pt.z);
+}
+
+//----------------------------------------------------------
+ofVec2f ofxKinectCommonBridge::getDepthPositionForColorPosition(int x, int y){
+	return getDepthPositionForColorPosition(ofVec2f(x,y));
+}
+
+//----------------------------------------------------------
+ofVec2f ofxKinectCommonBridge::getDepthPositionForColorPosition(ofVec2f pos){
+	long x,y;
+	NuiImageGetColorPixelCoordinatesFromDepthPixelAtResolution( 
+		colorRes, depthRes, 0, 
+		pos.x, pos.y, getRawDepthValue(pos), &x, &y ); 
+	return ofVec2f( x, y );
 }
 
 //----------------------------------------------------------
