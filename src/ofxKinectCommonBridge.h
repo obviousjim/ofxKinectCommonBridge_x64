@@ -116,9 +116,20 @@ class ofxKinectCommonBridge : protected ofThread {
 	unsigned short getRawDepthValue(ofVec2f pos);
 
 	//coordinate mapping
-	ofVec3f getSkeletonPositionForDepthPosition(ofVec2f pos);
-	ofVec2f getDepthPositionForColorPosition(int x, int y);
-	ofVec2f getDepthPositionForColorPosition(ofVec2f pos);
+	//ofVec3f getSkeletonPositionForDepthPosition(ofVec2f pos);
+	//ofVec2f getDepthPositionForColorPosition(ofVec2f pos);
+	//ofVec2f getDepthPositionForColorPosition(int x, int y);
+	//ofVec2f getDepthPositionForColorPosition(int x, int y, ofShortPixels& depthImage);
+
+
+	vector<ofVec3f> mapDepthToSkeleton(vector<ofPoint>& depthPoints);
+	vector<ofVec3f> mapDepthToSkeleton(vector<ofPoint>& depthPoints, ofShortPixels& depthImage);
+	
+	vector<ofVec2f> mapColorToDepth(vector<ofPoint>& colorPoints);
+	vector<ofVec2f> mapColorToDepth(vector<ofPoint>& colorPoints, ofShortPixels& depthImage);
+	
+	vector<ofVec3f> mapColorToSkeleton(vector<ofPoint>& colorPoints);
+	vector<ofVec3f> mapColorToSkeleton(vector<ofPoint>& colorPoints, ofShortPixels& depthImage);
 
   private:
 
