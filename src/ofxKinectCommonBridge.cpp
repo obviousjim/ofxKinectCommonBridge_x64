@@ -576,9 +576,7 @@ bool ofxKinectCommonBridge::initColorStream( int width, int height, bool mapColo
     KinectEnableColorStream(hKinect, colorRes, &cf);
 	if( KinectStreamStatusError != KinectGetColorStreamStatus(hKinect) )
 	{
-		//BYTE* pColorBuffer = new BYTE[format.cbBufferSize];
 		colorFormat = cf;
-		ofLog() << "allocating a buffer of size " << colorFormat.dwWidth*colorFormat.dwHeight*sizeof(unsigned char)*4 << " when k4w wants size " << colorFormat.cbBufferSize << endl;
 		videoPixels.allocate(colorFormat.dwWidth, colorFormat.dwHeight,OF_IMAGE_COLOR_ALPHA);
 		videoPixelsBack.allocate(colorFormat.dwWidth, colorFormat.dwHeight,OF_IMAGE_COLOR_ALPHA);
 		if(bUseTexture){
@@ -761,7 +759,7 @@ vector<ofVec3f> ofxKinectCommonBridge::mapDepthToSkeleton(vector<ofPoint>& depth
 
 	vector<ofVec3f> points;
 	for(int i = 0; i < depthPoints.size(); i++){
-		Vector4& p = skeletonPoints[depthPoints[i].y*depthFormat.dwWidth+depthPoints[i].x]; 
+		Vector4& p = skeletonPoints[int(depthPoints[i].y) * depthFormat.dwWidth + int(depthPoints[i].x)]; 
 		points.push_back( ofVec3f(p.x,p.y,p.z) );
 	}
 	return points;
@@ -774,6 +772,7 @@ vector<ofVec2f> ofxKinectCommonBridge::mapColorToDepth(vector<ofPoint>& colorPoi
 vector<ofVec2f> ofxKinectCommonBridge::mapColorToDepth(vector<ofPoint>& colorPoints, ofShortPixels& depthImage){
 	vector<NUI_DEPTH_IMAGE_PIXEL> depthPixels;
 	vector<NUI_DEPTH_IMAGE_POINT> depthPoints;
+
 	int depthArraySize = depthFormat.dwHeight*depthFormat.dwWidth;
 	int colorArraySize = colorFormat.dwHeight*colorFormat.dwWidth;
 
@@ -794,9 +793,10 @@ vector<ofVec2f> ofxKinectCommonBridge::mapColorToDepth(vector<ofPoint>& colorPoi
 
 	vector<ofVec2f> points;
 	for(int i = 0; i < colorPoints.size(); i++){
-		NUI_DEPTH_IMAGE_POINT& p = depthPoints[colorPoints[i].y*colorFormat.dwWidth+colorPoints[i].x]; 
+		NUI_DEPTH_IMAGE_POINT& p = depthPoints[ int(colorPoints[i].y)*colorFormat.dwWidth+int(colorPoints[i].x) ]; 
 		points.push_back( ofVec2f(p.x,p.y) );
 	}
+	
 	return points;
 }
 
@@ -828,14 +828,11 @@ vector<ofVec3f> ofxKinectCommonBridge::mapColorToSkeleton(vector<ofPoint>& color
 
 	vector<ofVec3f> points;
 	for(int i = 0; i < colorPoints.size(); i++){
-		Vector4 pos = depthPoints[colorPoints[i].y*colorFormat.dwWidth+colorPoints[i].x];
+		Vector4 pos = depthPoints[int(colorPoints[i].y)*colorFormat.dwWidth+int(colorPoints[i].x)];
 		points.push_back( ofVec3f(pos.x,pos.y,pos.z) );
 	}
 	return points;
 
-//	for( int i = 0; i < arraySize; i++) {
-		//videoPixels[i] = videoPixels[depthPoints[i].y * depthImage.getWidth() + depthPoints[i].x];
-//	}
 }
 
 //----------------------------------------------------------
@@ -864,8 +861,6 @@ void ofxKinectCommonBridge::threadedFunction(){
 
 	LONGLONG timestamp;
 	
-	cout << "STARTING THREAD" << endl;
-
 	//JG: DO WE NEED TO BAIL ON THIS LOOP IF THE DEVICE QUITS? 
 	//how can we tell?
 	while(isThreadRunning()) {
